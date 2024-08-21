@@ -4,14 +4,15 @@ import {
   Component,
   inject,
 } from '@angular/core';
-import { FileSystemSessionService } from '../../core/file-system/services/file-system-session.service';
+import { FileSystemSessionService } from '@core/file-system/services/file-system-session.service';
 import { MatButton } from '@angular/material/button';
-import { ContextMenuDirective } from '../../gui/context-menu/directives/context-menu.directive';
-import { useOpenPrompt } from '../../gui/prompt/useOpenPrompt';
+import { ContextMenuDirective } from '@gui/context-menu/directives/context-menu.directive';
+import { useOpenPrompt } from '@gui/prompt/useOpenPrompt';
 import { FormControl } from '@angular/forms';
-import { rxMethod } from '../../utils/rx-method';
+import { rxMethod } from '@utils/rx-method';
 import { pipe, switchMap } from 'rxjs';
-import { tapResult } from '../../utils/tap-result';
+import { tapResult } from '@utils/tap-result';
+import { CommonContextMenuComponent } from './components/common-context-menu/common-context-menu.component';
 
 @Component({
   selector: 'ws-file-explorer',

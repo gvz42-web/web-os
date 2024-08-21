@@ -1,5 +1,5 @@
 import { effect, Injectable, signal } from '@angular/core';
-import { useLocalStorage } from '../../../utils/use-local-storage';
+import { useLocalStorage } from '@utils/use-local-storage';
 import { IFolder } from '../models/folder.interface';
 import { defaultFileSystem } from '../default/default-fs';
 

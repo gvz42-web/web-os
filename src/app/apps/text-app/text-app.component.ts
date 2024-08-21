@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FileSystemSessionService } from '../../core/file-system/services/file-system-session.service';
+import { FileSystemSessionService } from '@core/file-system/services/file-system-session.service';
 
 @Component({
   selector: 'ws-text-app',

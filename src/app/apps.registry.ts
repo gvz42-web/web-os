@@ -1,4 +1,4 @@
-import { IApp } from './core/app-manager/models/app.interface';
+import { IApp } from '@core/app-manager/models/app.interface';
 
 export const apps: IApp[] = [
   {

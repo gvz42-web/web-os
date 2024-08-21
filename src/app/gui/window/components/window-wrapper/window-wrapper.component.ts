@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { WindowComponent } from '../window/window.component';
 import { CdkDrag } from '@angular/cdk/drag-drop';
-import { AppManagerService } from '../../../../core/app-manager/services/app-manager.service';
+import { AppManagerService } from '@core/app-manager/services/app-manager.service';
 
 @Component({
   selector: 'ws-window-wrapper',

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
-import { IApp } from '../../../core/app-manager/models/app.interface';
+import { IApp } from '@core/app-manager/models/app.interface';
 
 @Component({
   selector: 'ws-app-icon',

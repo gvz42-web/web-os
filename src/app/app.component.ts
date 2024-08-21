@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { DesktopComponent } from './gui/desktop/desktop.component';
+import { DesktopComponent } from '@gui/desktop/desktop.component';
 
 @Component({
   selector: 'ws-root',

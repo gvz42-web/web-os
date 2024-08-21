@@ -4,8 +4,8 @@ import {
   computed,
   inject,
 } from '@angular/core';
-import { AppIconComponent } from '../../../base/app-icon/app-icon.component';
-import { AppManagerService } from '../../../../core/app-manager/services/app-manager.service';
+import { AppIconComponent } from '@gui/base/app-icon/app-icon.component';
+import { AppManagerService } from '@core/app-manager/services/app-manager.service';
 import { NgClass } from '@angular/common';
 
 @Component({

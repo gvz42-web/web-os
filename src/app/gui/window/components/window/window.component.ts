@@ -7,7 +7,7 @@ import {
   signal,
 } from '@angular/core';
 import { CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
-import { IRunningApp } from '../../../../core/app-manager/models/app.interface';
+import { IRunningApp } from '@core/app-manager/models/app.interface';
 import { NgComponentOutlet, NgStyle } from '@angular/common';
 import {
   animate,
