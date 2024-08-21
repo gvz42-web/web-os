@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  computed,
   inject,
   ViewEncapsulation,
 } from '@angular/core';
@@ -39,14 +38,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
 export class ContextMenuOverlayComponent {
   private readonly contextMenuService = inject(ContextMenuService);
 
-  template = this.contextMenuService.template;
-  position = computed(() => {
-    const position = this.contextMenuService.position();
-    return {
-      x: (position?.x || 50) + 'px',
-      y: (position?.y || 50) + 'px',
-    };
-  });
+  config = this.contextMenuService.config;
 
   close() {
     this.contextMenuService.closeMenu();

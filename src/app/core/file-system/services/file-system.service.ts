@@ -54,7 +54,17 @@ export class FileSystemService {
     this.updateFS();
   }
 
-  updateFS() {
+  deleteFolder(pathParts: string[], name: string) {
+    const folder = this.getDirectory(pathParts);
+    if (folder) {
+      folder.subFolders = folder.subFolders.filter(
+        folder => folder.name !== name
+      );
+    }
+    this.updateFS();
+  }
+
+  private updateFS() {
     this.fs.update(fs => ({ ...fs }));
   }
 }

@@ -5,20 +5,28 @@ interface Position {
   y: number;
 }
 
+interface ContextMenuConfig {
+  position: Position;
+  template: TemplateRef<unknown>;
+  data?: any;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class ContextMenuService {
-  template = signal<TemplateRef<unknown> | null>(null);
-  position = signal<Position | null>(null);
+  private contextMenuConfig = signal<ContextMenuConfig | null>(null);
+  public config = this.contextMenuConfig.asReadonly();
 
-  openMenu(template: TemplateRef<unknown>, position: Position) {
-    this.position.set(position);
-    this.template.set(template);
+  openMenu(template: TemplateRef<unknown>, position: Position, data?: any) {
+    this.contextMenuConfig.set({
+      template,
+      position,
+      data,
+    });
   }
 
   closeMenu() {
-    this.template.set(null);
-    this.position.set(null);
+    this.contextMenuConfig.set(null);
   }
 }

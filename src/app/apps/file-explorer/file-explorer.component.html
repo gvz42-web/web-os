@@ -17,6 +17,7 @@
       <button
         class="flex w-16 flex-col text-white"
         [wsContextMenu]="fileMenu"
+        [wsContextMenuData]="folder.name"
         (click)="openFolder(folder.name)">
         <img src="assets/apps/file-explorer/folder.svg" alt="Folder" />
         <div class="w-full truncate text-center text-sm">{{ folder.name }}</div>
@@ -25,12 +26,9 @@
   </div>
 
   <ng-template #commonMenu>
-    <ul>
-      <li>
-        <button (click)="createFolder()">Create folder</button>
-      </li>
-      <li>Create file</li>
-    </ul>
+    <ws-common-context-menu />
   </ng-template>
-  <ng-template #fileMenu> File! </ng-template>
+  <ng-template #fileMenu let-name>
+    <ws-folder-context-menu [folderName]="name" />
+  </ng-template>
 </div>

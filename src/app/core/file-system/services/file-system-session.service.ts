@@ -26,4 +26,8 @@ export class FileSystemSessionService {
   createFolder(name: string) {
     this.fileSystem.createFolder(this.currentPath(), name);
   }
+
+  deleteFolder(name: string) {
+    this.fileSystem.deleteFolder(this.currentPath(), name);
+  }
 }

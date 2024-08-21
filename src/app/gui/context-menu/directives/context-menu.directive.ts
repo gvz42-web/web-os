@@ -15,6 +15,7 @@ export class ContextMenuDirective {
   contextMenuService = inject(ContextMenuService);
 
   wsContextMenu = input<TemplateRef<unknown>>();
+  wsContextMenuData = input<any>();
 
   @HostListener('contextmenu', ['$event'])
   onRightClick(event: MouseEvent) {
@@ -22,10 +23,14 @@ export class ContextMenuDirective {
     event.stopPropagation();
     const menuTemplate = this.wsContextMenu();
     if (menuTemplate) {
-      this.contextMenuService.openMenu(menuTemplate, {
-        x: event.clientX,
-        y: event.clientY,
-      });
+      this.contextMenuService.openMenu(
+        menuTemplate,
+        {
+          x: event.clientX,
+          y: event.clientY,
+        },
+        this.wsContextMenuData()
+      );
     }
   }
 
