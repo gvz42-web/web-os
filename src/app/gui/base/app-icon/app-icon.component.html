@@ -1,0 +1,17 @@
+<div class="relative">
+  <div
+    class="h-16 w-16 cursor-pointer overflow-hidden rounded-2xl bg-white transition-all hover:-translate-y-2 hover:scale-105 hover:shadow-2xl"
+    [matTooltip]="app().name || 'Untitled app'"
+    matTooltipPosition="below">
+    @if (app().iconUrl; as icon) {
+      <img
+        class="h-full w-full"
+        [src]="icon"
+        [alt]="app().name || 'Untitled app'" />
+    }
+  </div>
+  @if (opened()) {
+    <div
+      class="absolute -bottom-2 left-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-white"></div>
+  }
+</div>

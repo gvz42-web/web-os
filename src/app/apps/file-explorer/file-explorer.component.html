@@ -1,0 +1,36 @@
+<div class="flex h-full flex-col gap-4 p-4">
+  <div
+    class="flex items-center justify-between rounded-3xl bg-gray-500 ps-4 text-white">
+    <div>{{ currentPath().join('/') }}</div>
+    <button
+      [disabled]="currentFolder()?.name === '.'"
+      (click)="up()"
+      mat-flat-button>
+      Back
+    </button>
+  </div>
+
+  <div
+    class="flex flex-1 flex-wrap content-start items-start gap-3"
+    [wsContextMenu]="commonMenu">
+    @for (folder of currentFolder()?.subFolders; track folder.name) {
+      <button
+        class="flex w-16 flex-col text-white"
+        [wsContextMenu]="fileMenu"
+        (click)="openFolder(folder.name)">
+        <img src="assets/apps/file-explorer/folder.svg" alt="Folder" />
+        <div class="w-full truncate text-center text-sm">{{ folder.name }}</div>
+      </button>
+    }
+  </div>
+
+  <ng-template #commonMenu>
+    <ul>
+      <li>
+        <button (click)="createFolder()">Create folder</button>
+      </li>
+      <li>Create file</li>
+    </ul>
+  </ng-template>
+  <ng-template #fileMenu> File! </ng-template>
+</div>

@@ -1,0 +1,17 @@
+<div class="flex flex-col gap-5 p-6">
+  <div class="text-center font-medium">{{ config.title }}</div>
+  @for (input of config.inputs; track input.formControl) {
+    <input
+      class="ws-input w-full"
+      [formControl]="input.formControl"
+      (keydown.enter)="close('submit')"
+      type="text" />
+  }
+  <div class="flex justify-stretch gap-2">
+    @for (action of config.actions; track action.label) {
+      <button (click)="close(action.type)" mat-flat-button>
+        {{ action.label }}
+      </button>
+    }
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="relative h-full">
+  @for (app of openedApps(); track app.appId) {
+    <ws-window
+      [app]="app"
+      (closeApp)="closeApp(app.appId)"
+      (focusApp)="focusApp(app.appId)"
+      (minimizeApp)="minimizeApp(app.appId)" />
+  }
+</div>

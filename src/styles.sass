@@ -1,0 +1,38 @@
+@use '@angular/cdk' as cdk
+
+@include cdk.overlay()
+
+@tailwind base
+@tailwind components
+@tailwind utilities
+
+*
+  box-sizing: border-box
+
+html, body
+  padding: 0
+  margin: 0
+
+.fullscreen
+  display: block
+  width: 100vw
+  height: 100vh
+
+@layer components
+  .ws-input
+    @apply border-0 outline-0 bg-gray-600 rounded-2xl px-3 py-2
+
+  .context-menu
+    ul
+      @apply list-none
+
+      li
+        @apply px-5 py-3 cursor-pointer hover:bg-gray-400/60 transition-colors text-sm
+
+  .prompt-backdrop
+    @apply backdrop-blur bg-gray-900/30
+
+  .prompt-dialog
+
+    .mat-mdc-dialog-surface
+      @apply rounded-3xl backdrop-blur bg-gray-700/80 text-white shadow-2xl
