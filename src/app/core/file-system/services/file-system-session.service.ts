@@ -30,4 +30,12 @@ export class FileSystemSessionService {
   deleteFolder(name: string) {
     this.fileSystem.deleteFolder(this.currentPath(), name);
   }
+
+  createFile(name: string) {
+    this.fileSystem.createFile(this.currentPath(), name, '');
+  }
+
+  deleteFile(name: string) {
+    this.fileSystem.deleteFile(this.currentPath(), name);
+  }
 }

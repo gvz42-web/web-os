@@ -2,6 +2,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   effect,
+  inject,
+  Injector,
   input,
   output,
   signal,
@@ -19,6 +21,7 @@ import {
 import { WDraggableDirective } from '../../directives/draggable.directive';
 import { DragHandleDirective } from '../../directives/drag-handle.directive';
 import { CdkScrollable } from '@angular/cdk/scrolling';
+import { WS_APP_DATA } from '@core/app-manager/app-tokens';
 
 @Component({
   selector: 'ws-window',
@@ -53,8 +56,12 @@ import { CdkScrollable } from '@angular/cdk/scrolling';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WindowComponent {
+  private readonly injector = inject(Injector);
+
   app = input.required<IRunningApp>();
   component = signal<any>(undefined);
+
+  componentInjector!: Injector;
 
   closeApp = output<void>();
   focusApp = output<void>();
@@ -65,6 +72,16 @@ export class WindowComponent {
       this.app()
         .loadComponent()
         .then(component => this.component.set(component));
+
+      this.componentInjector = Injector.create({
+        providers: [
+          {
+            provide: WS_APP_DATA,
+            useValue: this.app().data,
+          },
+        ],
+        parent: this.injector,
+      });
     });
   }
 

@@ -10,12 +10,12 @@ export class AppManagerService {
 
   runningApps = signal<IRunningApp[]>([]);
 
-  runApp(appId: string) {
+  runApp(appId: string, data?: unknown) {
     const app = this.allApps.find(app => app.appId === appId);
     if (app) {
       this.runningApps.update(apps => [
         ...apps,
-        { ...app, isMinimized: false },
+        { ...app, isMinimized: false, data },
       ]);
     }
   }

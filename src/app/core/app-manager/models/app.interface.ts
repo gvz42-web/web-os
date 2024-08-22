@@ -11,4 +11,5 @@ export interface IApp {
 
 export type IRunningApp = IApp & {
   isMinimized: boolean;
+  data?: unknown;
 };

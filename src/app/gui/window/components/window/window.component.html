@@ -18,7 +18,8 @@
     </div>
     <div class="flex-1">
       @if (component(); as component) {
-        <ng-container *ngComponentOutlet="component" />
+        <ng-container
+          *ngComponentOutlet="component; injector: componentInjector" />
       } @else {
         Loading...
       }

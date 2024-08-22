@@ -30,4 +30,13 @@ export const apps: IApp[] = [
         m => m.FileExplorerComponent
       ),
   },
+  {
+    name: 'Text editor',
+    appId: 'textEditor',
+    iconUrl: 'assets/app-icons/default.svg',
+    loadComponent: () =>
+      import('./apps/text-editor/text-editor.component').then(
+        m => m.TextEditorComponent
+      ),
+  },
 ];

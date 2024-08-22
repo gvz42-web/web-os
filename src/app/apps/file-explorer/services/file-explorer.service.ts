@@ -76,4 +76,68 @@ export class FileExplorerService {
       })
     )
   );
+
+  createFile = rxMethod<void>(
+    pipe(
+      switchMap(() => {
+        const fileName = new FormControl('New file');
+
+        return this.openPrompt({
+          title: 'Create a new file',
+          inputs: [
+            {
+              placeholder: 'Give it a name',
+              formControl: fileName,
+            },
+          ],
+          actions: [
+            {
+              label: 'Create',
+              type: 'submit',
+            },
+            {
+              label: 'Cancel',
+              type: 'cancel',
+            },
+          ],
+        }).pipe(
+          tapResult(action => {
+            const name = fileName.getRawValue();
+            if (action === 'submit' && name) {
+              this.fsSession.createFile(name);
+              this.changeDetectorRef.detectChanges();
+            }
+          })
+        );
+      })
+    )
+  );
+
+  deleteFile = rxMethod<string>(
+    pipe(
+      switchMap(name => {
+        return this.openPrompt({
+          title: `Delete file ${name}?`,
+          text: 'This action cannot be undone',
+          actions: [
+            {
+              label: 'Yes',
+              type: 'submit',
+            },
+            {
+              label: 'Cancel',
+              type: 'cancel',
+            },
+          ],
+        }).pipe(
+          tapResult(action => {
+            if (action === 'submit') {
+              this.fsSession.deleteFile(name);
+              this.changeDetectorRef.detectChanges();
+            }
+          })
+        );
+      })
+    )
+  );
 }

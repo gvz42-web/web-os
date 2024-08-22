@@ -16,11 +16,21 @@
     @for (folder of currentFolder()?.subFolders; track folder.name) {
       <button
         class="flex w-16 flex-col text-white"
-        [wsContextMenu]="fileMenu"
+        [wsContextMenu]="folderMenu"
         [wsContextMenuData]="folder.name"
         (click)="openFolder(folder.name)">
         <img src="assets/apps/file-explorer/folder.svg" alt="Folder" />
         <div class="w-full truncate text-center text-sm">{{ folder.name }}</div>
+      </button>
+    }
+    @for (file of currentFolder()?.files; track file.name) {
+      <button
+        class="flex w-16 flex-col text-white"
+        [wsContextMenu]="fileMenu"
+        [wsContextMenuData]="file.name"
+        (click)="openFile(file)">
+        <img src="assets/apps/file-explorer/file.svg" alt="File" />
+        <div class="w-full truncate text-center text-sm">{{ file.name }}</div>
       </button>
     }
   </div>
@@ -28,7 +38,10 @@
   <ng-template #commonMenu>
     <ws-common-context-menu />
   </ng-template>
-  <ng-template #fileMenu let-name>
+  <ng-template #folderMenu let-name>
     <ws-folder-context-menu [folderName]="name" />
+  </ng-template>
+  <ng-template #fileMenu let-name>
+    <ws-file-context-menu [name]="name" />
   </ng-template>
 </div>
